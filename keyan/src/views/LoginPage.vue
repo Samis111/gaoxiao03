@@ -10,6 +10,9 @@
         <label class="radio-inline">
           <input type="radio" name="role" value="admin" v-model="role" /> 审批人
         </label>
+        <label class="radio-inline">
+          <input type="radio" name="role" value="superadmin" v-model="role" /> 管理员
+        </label>
       </div>
       <div class="form-group">
         <input type="text" class="form-control" v-model="username" placeholder="Username" />
@@ -51,12 +54,12 @@ export default {
 
         // console.log('Login response:', fakeResponse) // 调试日志
 
-        let userinfo = { 
-          username: this.username, 
-          password: this.password, 
-          role: this.role 
+        let userinfo = {
+          username: this.username,
+          password: this.password,
+          role: this.role
         }
-        
+
         const fakeResponse = await this.$store.dispatch('login', userinfo)
         console.log('Login response:', fakeResponse) // 调试日志
 
@@ -78,6 +81,8 @@ export default {
             await this.$router.push('/student-home')
           } else if (this.role === 'admin') {
             await this.$router.push('/admin-home')
+          } else if (this.role === 'superadmin') {
+            await this.$router.push('/superadmin-home')
           }
 
           console.log('Current route:', this.$route.path) // 调试日志

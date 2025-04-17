@@ -116,6 +116,46 @@ const routes = [
     ]
   },
   {
+    path: '/superadmin-home',
+    name: 'AdminHome',
+    component: AdminHome,
+    meta: { requiresAuth: true, role: 'admin', show: false },
+    children: [
+      {
+        path: 'project-management',
+        component: ProjectManagement
+      },
+      {
+        path: 'review-status',
+        component: AReviewStatus
+      },
+      {
+        path: 'project-details',
+        component: AProjectDetails
+      },
+      {
+        path: 'archive-page',
+        component: ArchivePage
+      },
+      {
+        path: 'user-management',
+        component: UserManagement
+      },
+      {
+        path: 'pigeonholes',
+        component: Pigeonholes
+      },
+      {
+        path: 'instituteManagement',
+        component: InstituteManagement
+      },
+      {
+        path: 'professionalManagement',
+        component: ProfessionalManagement
+      }
+    ]
+  },
+  {
     path: '/',
     name: 'Login',
     component: LoginPage,
@@ -163,6 +203,8 @@ router.beforeEach((to, from, next) => {
         next('/student-home');
       } else if (userInfo.role === 'admin') {
         next('/admin-home');
+      } else if (userInfo.role === 'superadmin') {
+        next('/superadmin-home');
       } else {
         next('/'); // 默认重定向到登录页
       }
@@ -186,20 +228,23 @@ router.beforeEach((to, from, next) => {
   } else if (to.path.startsWith('/student') && userInfo.role !== 'student') {
     console.log('非学生访问学生页面');
     next('/admin-home'); // 或者重定向到无权限页面
+  } else if (to.path.startsWith('/superadmin') && userInfo.role !== 'superadmin') {
+    console.log('非超级管理员访问超级管理员页面');
+    next('/superadmin-home'); // 或者重定向到无权限页面
   } else {
     next(); // 角色匹配，放行
   }
 
   if (to.meta.public) {
     if (isLogin) {
-      next(userInfo.role === 'student' ? '/student-home' : '/admin-home');
+      next(userInfo.role === 'student' ? '/student-home' : userInfo.role === 'admin' ? '/admin-home' : '/superadmin-home');
     } else {
       next();
     }
   } else if (to.meta.requiresAuth && !isLogin) {
     next('/');
   } else if (to.meta.role && userInfo.role !== to.meta.role) {
-    next(userInfo.role === 'student' ? '/student-home' : '/admin-home');
+    next(userInfo.role === 'student' ? '/student-home' : userInfo.role === 'admin' ? '/admin-home' : '/superadmin-home');
   } else {
     next();
   }
