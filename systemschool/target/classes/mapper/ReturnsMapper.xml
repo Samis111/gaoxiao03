@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.system.mapper.ReturnsMapper">
+
+    <resultMap id="BaseResultMap" type="com.system.domain.Returns">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="userid" column="userid" jdbcType="INTEGER"/>
+            <result property="projectid" column="projectId" jdbcType="INTEGER"/>
+            <result property="status" column="status" jdbcType="VARCHAR"/>
+            <result property="username" column="username" jdbcType="VARCHAR"/>
+            <result property="thistime" column="thistime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,userid,projectId,
+        status,username,thistime
+    </sql>
+</mapper>
