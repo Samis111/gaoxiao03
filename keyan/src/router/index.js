@@ -4,6 +4,7 @@ import LoginPage from '../views/LoginPage.vue'
 import RegisterPage from '../views/RegisterPage.vue'
 import StudentHome from '../components/StudentHome.vue'
 import AdminHome from '../components/AdminHome.vue'
+import SuperAdminHome from '../components/SuperadminHome.vue'
 import Password from '../views/student/Password.vue'
 import ProfileForm from '../views/student/ProfileForm.vue'
 import Pigeonhole from '../views/student/Pigeonhole.vue'
@@ -126,9 +127,9 @@ const routes = [
   },
   {
     path: '/superadmin-home',
-    name: 'AdminHome',
-    component: AdminHome,
-    meta: { requiresAuth: true, role: 'admin', show: false },
+    name: 'SuperAdminHome',
+    component: SuperAdminHome,
+    meta: { requiresAuth: true, role: 'superadmin', show: false },
     children: [
       {
         path: 'project-management',
@@ -149,6 +150,10 @@ const routes = [
       {
         path: 'user-management',
         component: UserManagement
+      },
+      {
+        path: 'user-management1',
+        component: UserManagement1
       },
       {
         path: 'pigeonholes',

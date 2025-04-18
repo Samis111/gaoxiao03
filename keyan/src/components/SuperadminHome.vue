@@ -31,15 +31,15 @@
           @close="handleClose"
           :collapse="isCollapse"
         >
-          <!-- <el-menu-item index="1" @click="navigateTo('/admin-home/user-management')">
+          <el-menu-item index="1" @click="navigateTo('/superadmin-home/user-management')">
             <i class="el-icon-user-solid"></i>
             <span slot="title">申请人管理</span>
           </el-menu-item>
-          <el-menu-item index="2" @click="navigateTo('/admin-home/user-management1')">
+          <el-menu-item index="2" @click="navigateTo('/superadmin-home/user-management1')">
             <i class="el-icon-user-solid"></i>
             <span slot="title">审批人管理</span>
-          </el-menu-item> -->
-          <el-menu-item
+          </el-menu-item>
+          <!-- <el-menu-item
             index="3"
             @click="navigateTo('/admin-home/project-management')"
           >
@@ -53,21 +53,22 @@
             </template>
             <el-menu-item-group>
               <el-menu-item index="3-1" @click="navigateTo('/admin-home/review-status')">状态</el-menu-item>
-              <!-- <el-menu-item index="3-2" @click="navigateTo('/admin-home/archive-page')">归档</el-menu-item> -->
             </el-menu-item-group>
-          </el-submenu>
-          <!-- <el-submenu index="4">
+          </el-submenu> -->
+          <el-submenu index="4">
             <template slot="title">
               <i class="el-icon-s-claim"></i>
               <span slot="title">关键词管理</span>
             </template>
             <el-menu-item-group>
-              <el-menu-item index="4-1" @click="navigateTo('/admin-home/instituteManagement')">学院管理</el-menu-item>
+              <el-menu-item index="4-1" @click="navigateTo('/superadmin-home/instituteManagement')">学院管理</el-menu-item>
+              <!-- <el-menu-item index="3-2" @click="navigateTo('/admin-home/archive-page')">归档</el-menu-item> -->
             </el-menu-item-group>
             <el-menu-item-group>
-              <el-menu-item index="4-2" @click="navigateTo('/admin-home/professionalManagement')">专业管理</el-menu-item>
+              <el-menu-item index="4-2" @click="navigateTo('/superadmin-home/professionalManagement')">专业管理</el-menu-item>
+              <!-- <el-menu-item index="3-2" @click="navigateTo('/admin-home/archive-page')">归档</el-menu-item> -->
             </el-menu-item-group>
-          </el-submenu> -->
+          </el-submenu>
         </el-menu>
       </div>
       <router-view  class="router-view"></router-view>
