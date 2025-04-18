@@ -33,10 +33,14 @@
         >
           <el-menu-item index="1" @click="navigateTo('/admin-home/user-management')">
             <i class="el-icon-user-solid"></i>
-            <span slot="title">用户管理</span>
+            <span slot="title">申请人管理</span>
+          </el-menu-item>
+          <el-menu-item index="2" @click="navigateTo('/admin-home/user-management1')">
+            <i class="el-icon-user-solid"></i>
+            <span slot="title">审批人管理</span>
           </el-menu-item>
           <el-menu-item
-            index="2"
+            index="3"
             @click="navigateTo('/admin-home/project-management')"
           >
             <i class="el-icon-s-cooperation"></i>

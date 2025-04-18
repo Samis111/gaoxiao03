@@ -2,7 +2,7 @@
   <div class="user-manager">
     <el-card class="box-card">
       <div slot="header" class="card-header">
-        <h2>申请人管理</h2>
+        <h2>审批人管理</h2>
       </div>
 
       <el-table :data="users" stripe border style="width: 100%">

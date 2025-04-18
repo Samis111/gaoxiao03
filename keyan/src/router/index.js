@@ -16,6 +16,10 @@ import AReviewStatus from '../views/admin/AReviewStatus.vue'
 import AProjectDetails from '../views/admin/AProjectDetails.vue'
 import ArchivePage from '../views/admin/ArchivePage.vue'
 import UserManagement from '../views/admin/UserManagement.vue'
+import UserManagement1 from '../views/admin/UserManagement1.vue'
+
+
+
 import Pigeonholes from '../views/admin/Pigeonholes.vue'
 import ProfessionalManagement from '@/views/admin/professionalManagement.vue'
 import InstituteManagement from '@/views/admin/instituteManagement.vue'
@@ -101,6 +105,11 @@ const routes = [
         path: 'user-management',
         component: UserManagement
       },
+      {
+        path: 'user-management1',
+        component: UserManagement1
+      },
+
       {
         path: 'pigeonholes',
         component: Pigeonholes
@@ -222,18 +231,18 @@ router.beforeEach((to, from, next) => {
   // }
 
   // 检查角色权限
-  if (to.path.startsWith('/admin') && userInfo.role !== 'admin') {
-    console.log('非管理员访问管理页面');
-    next('/student-home'); // 或者重定向到无权限页面
-  } else if (to.path.startsWith('/student') && userInfo.role !== 'student') {
-    console.log('非学生访问学生页面');
-    next('/admin-home'); // 或者重定向到无权限页面
-  } else if (to.path.startsWith('/superadmin') && userInfo.role !== 'superadmin') {
-    console.log('非超级管理员访问超级管理员页面');
-    next('/superadmin-home'); // 或者重定向到无权限页面
-  } else {
+  // if (to.path.startsWith('/admin') && userInfo.role !== 'admin') {
+  //   console.log('非管理员访问管理页面');
+  //   next('/student-home'); // 或者重定向到无权限页面
+  // } else if (to.path.startsWith('/student') && userInfo.role !== 'student') {
+  //   console.log('非学生访问学生页面');
+  //   next('/admin-home'); // 或者重定向到无权限页面
+  // } else if (to.path.startsWith('/superadmin') && userInfo.role !== 'superadmin') {
+  //   console.log('非超级管理员访问超级管理员页面');
+  //   next('/superadmin-home'); // 或者重定向到无权限页面
+  // } else {
     next(); // 角色匹配，放行
-  }
+  // }
 
   if (to.meta.public) {
     if (isLogin) {
